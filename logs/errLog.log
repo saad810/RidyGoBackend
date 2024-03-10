@@ -2,3 +2,5 @@
 20240309	23:24:31	464ec45a-a6c3-4c80-b1a3-32e8f5658342	ReferenceError: userId is not defined	POST	/order/create	undefined
 20240309	23:25:05	94791178-b0ce-47dc-b110-a9c639751072	ValidationError: RideOrder validation failed: orderId: Path `orderId` is required.	POST	/order/create	undefined
 20240310	09:43:58	9a09c07d-41ca-46c3-b446-c24bcd1e1bff	ReferenceError: DestinationLocation is not defined	POST	/order/create	undefined
+20240310	19:25:54	366f54e7-c760-4214-ba60-c518923105c6	Error: Cannot set headers after they are sent to the client	POST	/user/signup	undefined
+20240310	19:29:02	c042703d-6c5f-483b-b76b-3f6664639eec	MongooseError: document must have an _id before saving	POST	/user/signup	undefined

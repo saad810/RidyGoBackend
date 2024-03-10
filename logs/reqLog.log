@@ -11,3 +11,13 @@
 20240310	09:46:25	9f965618-9815-4e42-ba77-e1129bddce9c	POST	/order/create	undefined
 20240310	09:47:03	8ff66278-2cb0-4f0e-89ec-1a460d1b6119	GET	/order/	undefined
 20240310	10:05:24	68306d76-ab55-49ce-98a4-f864e0b138f1	GET	/order/	undefined
+20240310	19:24:56	74af8489-3ebe-4cb7-8b31-3c0fdcca8383	POST	/signup	undefined
+20240310	19:25:54	cd800055-d401-4b10-8afa-a9d73efd09de	POST	/user/signup	undefined
+20240310	19:26:05	3bf281d8-30ba-4b38-82fa-7116f89b886f	GET	/user/	undefined
+20240310	19:26:24	3c1136fc-0176-4207-bf05-9ce45e456e9b	GET	/user/	undefined
+20240310	19:26:46	b8bea28a-3abf-40fb-9d69-13d4a4df3800	GET	/user/signup	undefined
+20240310	19:26:56	5479acc6-e133-4567-aa0b-d7e2e5aa89a7	POST	/user/signup	undefined
+20240310	19:27:03	accf6e8a-8481-4116-9935-c1b1e5ea8f76	POST	/user/signup	undefined
+20240310	19:29:02	a2aedd0f-da64-465d-8c85-f21c2d113dc6	POST	/user/signup	undefined
+20240310	19:29:23	246e7ed0-c554-4d5e-a502-82e9df1d2374	POST	/user/signup	undefined
+20240310	19:30:00	f313b9f2-8388-4da0-b1a3-bf62caa76762	POST	/user/signin	undefined

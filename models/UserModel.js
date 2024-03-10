@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-// const express = require("express");
 
 const userModel = new mongoose.Schema({
-    _id: ObjectId,
+   
     image:{
         type:String,
         required:true,
-        default:"default.jpg"
+        default:'/img/default.png' // Replace this with the actual path to your default image
     },
     name:{
         type:String,
@@ -20,7 +19,6 @@ const userModel = new mongoose.Schema({
         type:String,
         required:true
     }
-    
-
 });
+
 module.exports = mongoose.model("User", userModel);

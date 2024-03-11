@@ -1,11 +1,11 @@
 const asyncHandler = require("express-async-handler");
 
 const RideOrder = require("../models/RiderOrder");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
+// const RiderOrder = require("../models/RiderOrder");
 // @desc    Create a new order
 // @route   POST /order/create
 // @access  Public
-
 const createOrder = asyncHandler(async (req, res) => {
   const {
     RideType,
@@ -16,7 +16,6 @@ const createOrder = asyncHandler(async (req, res) => {
     PickupLongitude,
   } = req.body;
   if (
-    // !userId ||
     !RideType ||
     !Price ||
     !DestinationLongitude ||
@@ -28,7 +27,7 @@ const createOrder = asyncHandler(async (req, res) => {
     throw new Error("All fields are required");
   }
   const userId = "65ee6add8b4b2e4a72a534c0";
-  const order = new RideOrder({
+  const order = await RideOrder.create({
     userId,
     RideType,
     Price,
@@ -37,14 +36,12 @@ const createOrder = asyncHandler(async (req, res) => {
     PickupLatitude,
     PickupLongitude,
   });
-  const createdOrder = await order.save();
-  if (createdOrder) {
-    res.status(201).json(createdOrder);
+  if (order) {
+    res.status(201).json(order); // Corrected variable name
   } else {
     res.status(400);
     throw new Error("Invalid order data");
   }
-  //   res.status(201).json(createdOrder);
 });
 
 const getAllOrders = asyncHandler(async (req, res) => {

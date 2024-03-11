@@ -49,4 +49,17 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-module.exports = { createOrder, getAllOrders };
+const updateStatus = asyncHandler(async (req, res) => {
+  const status = req.body.status;
+  const orderId = req.params.id;
+  const order = await RideOrder.findById(orderId);
+  if (order) {
+    order.status = status;
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+module.exports = { createOrder, getAllOrders, updateStatus };

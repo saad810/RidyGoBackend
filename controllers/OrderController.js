@@ -27,9 +27,9 @@ const createOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("All fields are required");
   }
-
+  const userId = "65ee6add8b4b2e4a72a534c0";
   const order = new RideOrder({
-    _id: new mongoose.Types.ObjectId(),
+    userId,
     RideType,
     Price,
     DestinationLongitude,
@@ -51,6 +51,5 @@ const getAllOrders = asyncHandler(async (req, res) => {
   const orders = await RideOrder.find({});
   res.json(orders);
 });
-
 
 module.exports = { createOrder, getAllOrders };

@@ -1,19 +1,13 @@
 const mongoose = require("mongoose");
-// const User = require("./UserModel");
+const User = require("./UserModel");
 const RideOrderModel = new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
 
-//   orderId: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "Order",
-//     required: true,
-//   },
-//   userId: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "User",
-//     required: true,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
     
-//   },
+  },
   status: {
     type: String,
     required: true,

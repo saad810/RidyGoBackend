@@ -110,8 +110,7 @@ const updateRiderStatus = asyncHandler(async (req, res) => {
 module.exports = {
     getRiders,
     getRiderById,
-    
-    signUp,
+        signUp,
     signIn,
     updateRiderStatus,
 }

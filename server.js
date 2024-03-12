@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 app.use("/order", require("./routes/OrderRoutes"));
 app.use("/user", require("./routes/UserRoutes"));
 // app.use("/rider", require("./routes/RiderRoutes"));
-app.use("/orderDetails", require("./routes/OrderDetailsRoutes"));
+// app.use("/orderDetails", require("./routes/OrderDetailsRoutes"));
 
 app.use(errorHandler);
 const port = process.env.PORT || 3000;

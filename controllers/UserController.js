@@ -63,4 +63,26 @@ const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   res.json(users);
 });
-module.exports = { signUp, signIn, getAllUsers };
+
+// @desc    Get most recent orders by user
+// @route   GET /recents/:id
+// @access  Public
+const getMostRecentOrdersByUser = asyncHandler(async () => {
+  const limit = 10;
+  const userId = req.params.id;
+  try {
+    // Query RideOrder collection based on userId and sort by date in descending order
+    const orders = await RideOrder.find({ userId })
+      .sort({ date: -1 })
+      .limit(limit)
+      .exec();
+
+    return orders;
+  } catch (error) {
+    // Handle error
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+});
+
+module.exports = { signUp, signIn, getAllUsers, getMostRecentOrdersByUser };

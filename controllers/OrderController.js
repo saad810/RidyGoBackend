@@ -67,4 +67,4 @@ const updateStatus = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 });
-module.exports = { createOrder, getAllOrders, updateStatus };
+module.exports = { createOrder, getAllOrders, updateStatus ,getOrderById};

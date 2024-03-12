@@ -1,5 +1,5 @@
 const OrderDetails = require("../models/OrderDetails");
-const asyncHandler = require("express-async-handler");
+
 // Create a new order
 const createOrder = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ const deleteOrder = async (req, res) => {
   }
 };
 
-const updateStatus = asyncHandler(async (req, res) => {
+const updateStatus = async (req, res) => {
   const status = req.body.status;
   const u_id = req.params.id;
   const order = await OrderDetails.findById(u_id);
@@ -56,6 +56,6 @@ const updateStatus = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Order not found");
   }
-});
+};
 
 module.exports = { createOrder, updateOrder, deleteOrder, updateStatus };

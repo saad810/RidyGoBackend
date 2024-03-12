@@ -8,6 +8,6 @@ const {
 
 router
   .post("/create", createOrder)
-  .post("/status", updateStatus)
+  .post("/status/:id", updateStatus)
   .get("/", getAllOrders);
 module.exports = router;

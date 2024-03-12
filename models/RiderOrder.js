@@ -41,6 +41,11 @@ const RideOrderModel = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
+  Remarks:{
+    type:String,
+    required:true,
+    default:"No Remarks"
+  }
 });
 module.exports = mongoose.model("RideOrder", RideOrderModel);
 // Path: server/models/UserModel.js

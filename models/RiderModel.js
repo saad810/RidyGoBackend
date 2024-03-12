@@ -26,10 +26,6 @@ const riderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  carColor: {
-    type: String,
-    required: true,
-  },
   carRegNo: {
     type: String,
     required: true,

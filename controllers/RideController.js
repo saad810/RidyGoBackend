@@ -46,6 +46,7 @@ const signUp = asyncHandler(async (req, res) => {
     cnic,
     carName,
     carModel,
+    
     carRegNo,
     carType,
   });

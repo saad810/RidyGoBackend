@@ -67,4 +67,20 @@ const updateStatus = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 });
-module.exports = { createOrder, getAllOrders, updateStatus ,getOrderById};
+// @desc    Add reason for order
+// @route   POST /order/:id/reason
+// @access  Public
+const AddReason = asyncHandler(async (req, res) => {
+  const reason = req.body.status;
+  const orderId = req.params.id;
+  const order = await RideOrder.findById(orderId);
+  if (order) {
+    order.Remarks = reason;
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+module.exports = { createOrder, getAllOrders, updateStatus ,getOrderById, AddReason};

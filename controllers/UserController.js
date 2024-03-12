@@ -2,6 +2,7 @@ const User = require("../models/UserModel");
 const asyncHandler = require("express-async-handler");
 // const bcrypt = require("bcrypt");
 const { generateToken } = require("../middleware/Token");
+const RideOrder = require("../models/RiderOrder");
 
 const signUp = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;

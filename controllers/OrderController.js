@@ -70,9 +70,18 @@ const updateStatus = asyncHandler(async (req, res) => {
 // @desc    Add reason for order
 // @route   POST /order/:id/reason
 // @access  Public
+const mongoose = require("mongoose");
+
 const AddReason = asyncHandler(async (req, res) => {
   const { Remarks } = req.body;
   const orderId = req.params.id;
+
+  // Check if orderId is a valid ObjectId
+  if (!mongoose.Types.ObjectId.isValid(orderId)) {
+    res.status(400);
+    throw new Error("Invalid orderId format");
+  }
+
   const order = await RideOrder.findById(orderId);
   if (order) {
     order.Remarks = Remarks;
@@ -83,6 +92,7 @@ const AddReason = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 });
+
 module.exports = {
   createOrder,
   getAllOrders,

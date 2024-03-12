@@ -12,3 +12,4 @@ router
   .put("/:id", updateOrder)
   .delete("/:id", deleteOrder)
   .put("/status/:id", updateStatus);
+module.exports = router;

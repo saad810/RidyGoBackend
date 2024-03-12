@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(logger);
+// app.use(logger);
 app.use(cookieParser());
 // app.use(bodyParser.urlencoded({ extended: true }));
 

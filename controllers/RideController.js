@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const Rider = require("../models/Rider");
+const Rider = require("../models/RiderModel");
 
 // @desc    get all riders
 // route    GET /riders

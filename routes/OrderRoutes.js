@@ -11,7 +11,7 @@ const {
 router
   .post("/create", createOrder)
   .put("/status/:id", updateStatus)
-  .put("/:id/reason", AddReason)
+  .put("/reason/:id", AddReason)
   .get("/", getAllOrders)
   .get("/:id", getOrderById);
 module.exports = router;

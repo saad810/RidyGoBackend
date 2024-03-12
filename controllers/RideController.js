@@ -27,18 +27,8 @@ const getRiderById = asyncHandler(async (req, res) => {
 });
 
 const signUp = asyncHandler(async (req, res) => {
-  const {
-    name,
-    email,
-    password,
-    cnic,
-    carName,
-    carModel,
-    carRegNo,
-    carType,
-    status,
-    rating,
-  } = req.body;
+  const { name, email, password, cnic, carName, carModel, carRegNo, carType } =
+    req.body;
   // userExists
   const riderExists = await Rider.findOne({ email });
   if (riderExists) {
@@ -58,8 +48,6 @@ const signUp = asyncHandler(async (req, res) => {
     carModel,
     carRegNo,
     carType,
-    status,
-    rating,
   });
   // Generate token
   const access_token = generateToken(newRider._id);
@@ -108,9 +96,9 @@ const updateRiderStatus = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-    getRiders,
-    getRiderById,
-        signUp,
-    signIn,
-    updateRiderStatus,
-}
+  getRiders,
+  getRiderById,
+  signUp,
+  signIn,
+  updateRiderStatus,
+};

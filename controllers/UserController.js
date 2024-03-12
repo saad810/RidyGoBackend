@@ -86,5 +86,23 @@ const getMostRecentOrdersByUser = asyncHandler(async (req, res) => {
     throw error;
   }
 });
+const getUserbyId = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user) return res.status(404).json({ error: "User not found" });
+  res.json(user);
+});
 
-module.exports = { signUp, signIn, getAllUsers, getMostRecentOrdersByUser };
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user) return res.status(404).json({ error: "User not found" });
+  await user.remove();
+  res.json({ message: "User removed " });
+});
+module.exports = {
+  signUp,
+  signIn,
+  getAllUsers,
+  getMostRecentOrdersByUser,
+  getUserbyId,
+  deleteUser,
+};

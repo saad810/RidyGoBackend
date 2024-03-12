@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Rider = require("../models/RiderModel");
-
+const {generateToken, verifyToken} = require("../middleware/Token")
 // @desc    get all riders
 // route    GET /riders
 // access   private

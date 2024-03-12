@@ -67,7 +67,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @desc    Get most recent orders by user
 // @route   GET /recents/:id
 // @access  Public
-const getMostRecentOrdersByUser = asyncHandler(async () => {
+const getMostRecentOrdersByUser = asyncHandler(async (req, res) => {
   const limit = 10;
   const userId = req.params.id;
   try {
@@ -77,7 +77,7 @@ const getMostRecentOrdersByUser = asyncHandler(async () => {
       .limit(limit)
       .exec();
 
-    return orders;
+    res.status(200).json(orders);
   } catch (error) {
     // Handle error
     console.error("Error fetching orders:", error);

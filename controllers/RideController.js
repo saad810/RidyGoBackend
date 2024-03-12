@@ -80,7 +80,7 @@ const signIn = asyncHandler(async (req, res) => {
     const access_token = generateToken(rider._id);
     res.json({ success: true, access_token, rider });
   } catch (err) {
-    console.error("Error signing in user:", error);
+    console.error("Error signing in user:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

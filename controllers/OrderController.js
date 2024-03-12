@@ -48,6 +48,11 @@ const getAllOrders = asyncHandler(async (req, res) => {
   const orders = await RideOrder.find({});
   res.json(orders);
 });
+const getOrderById = asyncHandler(async (req, res) => {
+  const order = await RideOrder.findById(req.params.id);
+  // const orders = await RideOrder.findById({});
+  res.json(order);
+});
 
 const updateStatus = asyncHandler(async (req, res) => {
   const status = req.body.status;

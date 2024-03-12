@@ -9,7 +9,7 @@ const {
 
 router
   .post("/create", createOrder)
-  .post("/status/:id", updateStatus)
+  .put("/status/:id", updateStatus)
   .get("/", getAllOrders)
   .get("/:id", getOrderById);
 module.exports = router;

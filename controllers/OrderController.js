@@ -59,7 +59,7 @@ const updateStatus = asyncHandler(async (req, res) => {
   const orderId = req.params.id;
   const order = await RideOrder.findById(orderId);
   if (order) {
-    order.Remarks = status;
+    order.status = status;
     const updatedOrder = await order.save();
     res.json(updatedOrder);
   } else {

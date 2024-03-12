@@ -72,11 +72,12 @@ const signIn = asyncHandler(async (req, res) => {
       res.status(400).json({ error: "Invalid email or password" });
       throw new Error("Invalid email or password");
     }
-    const isMatch = password === user.password;
+    const isMatch = password === rider.password;
     if (!isMatch) {
       res.status(400).json({ error: "Invalid email or password" });
       throw new Error("Invalid email or password");
     }
+    // res.json({ rider });
     const access_token = generateToken(rider._id);
     res.json({ success: true, access_token, rider });
   } catch (err) {

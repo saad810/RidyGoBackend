@@ -77,7 +77,8 @@ const getMostRecentOrdersByUser = asyncHandler(async (req, res) => {
       .sort({ date: -1 })
       .limit(limit)
       .exec();
-
+    if (!orders.length)
+      return res.status(404).json({ error: "No orders found" });
     res.status(200).json(orders);
   } catch (error) {
     // Handle error

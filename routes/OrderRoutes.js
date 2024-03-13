@@ -14,6 +14,8 @@ router
   .put("/status/:id", updateStatus)
   .put("/reason/:id", AddReason)
   .get("/", getAllOrders)
-  .get("/:id", getOrderById)
-  .get("/pendingOrders", getOrderByTenMins);
+  .get("/pendingOrders", getOrderByTenMins)
+  .get("/:id", getOrderById);
+
+
 module.exports = router;

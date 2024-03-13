@@ -9,7 +9,7 @@ const {
   getOrderByTenMins,
 } = require("../controllers/OrderController");
 
-router.get("/pendingOrders/:id", getOrderByTenMins);
+router.get("/pendingOrders", getOrderByTenMins);
 router
   .post("/create", createOrder)
   .put("/status/:id", updateStatus)

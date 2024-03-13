@@ -3,11 +3,13 @@ const {
   updateOrder,
   deleteOrder,
   updateStatus,
+  getOrderByTenMins,
 } = require("../controllers/OrderDetails");
 
 const router = require("express").Router();
 
 router
+  // .get("/pendingOrders", getOrderByTenMins)
   .post("/create", createOrder)
   .put("/:id", updateOrder)
   .delete("/:id", deleteOrder)

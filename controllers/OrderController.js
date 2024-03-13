@@ -90,14 +90,10 @@ const getOrderByTenMins = async (req, res) => {
   try {
     const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000); // Calculate 10 minutes ago
 
-    const pendingOrders = await RideOrder.aggregate([
-      {
-        $match: {
-          date: { $gte: tenMinutesAgo }, // Orders within the last 10 minutes
-          status: "Pending", // Orders with status Pending
-        },
-      },
-    ]);
+    const pendingOrders = await RideOrder.find({
+      date: { $gte: tenMinutesAgo }, // Orders within the last 10 minutes
+      status: "Pending", // Orders with status Pending
+    });
     res.status(200).json({ success: true, data: pendingOrders });
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal Server Error" });

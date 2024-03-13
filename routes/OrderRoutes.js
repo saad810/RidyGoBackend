@@ -6,16 +6,15 @@ const {
   updateStatus,
   getOrderById,
   AddReason,
-  getOrderByTenMins
+  getOrderByTenMins,
 } = require("../controllers/OrderController");
 
+router.get("/pendingOrders", getOrderByTenMins);
 router
   .post("/create", createOrder)
   .put("/status/:id", updateStatus)
   .put("/reason/:id", AddReason)
   .get("/", getAllOrders)
-  .get("/pendingOrders", getOrderByTenMins)
   .get("/:id", getOrderById);
-
 
 module.exports = router;

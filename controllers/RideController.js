@@ -13,6 +13,21 @@ const getRiders = asyncHandler(async (req, res) => {
   res.json(riders);
 });
 
+const getRiderByEmail = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const rider = await Rider.findOne({ email: email });
+    if (!rider) {
+      return res.status(404).json({ success: false, message: "Rider not found" });
+    }
+    res.status(200).json({ success: true, data: rider });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+
+
 // @desc    get rider by id
 // route    GET /riders/:id
 // access   private

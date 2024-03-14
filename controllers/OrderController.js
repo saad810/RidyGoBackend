@@ -88,17 +88,6 @@ const AddReason = asyncHandler(async (req, res) => {
 
 const getOrderByTenMins = async (req, res) => {
   try {
-    const email = req.params.email;
-    const rider = await RiderModel.findOne({ email: email });
-    if (!rider) {
-      return res.status(404).json({ success: false, message: "Rider not found" });
-    }
-    
-    // Check if the rider's status is online
-    if (rider.status !== "online") {
-      return res.status(403).json({ success: false, message: "Rider is not online" });
-    }
-
     const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000); // Calculate 10 minutes ago
 
     const pendingOrders = await RideOrder.find({
@@ -111,7 +100,6 @@ const getOrderByTenMins = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
-
 
 module.exports = {
   createOrder,

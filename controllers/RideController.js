@@ -13,19 +13,17 @@ const getRiders = asyncHandler(async (req, res) => {
   res.json(riders);
 });
 
-const getRiderByEmail = async (req, res) => {
-  try {
-    const email = req.params.email;
-    const rider = await Rider.findOne({ email: email });
-    if (!rider) {
-      return res.status(404).json({ success: false, message: "Rider not found" });
-    }
-    res.status(200).json({ success: true, data: rider });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Internal Server Error" });
-  }
-};
+const getRiderByEmail = asyncHandler(async (req, res) => {
+  const email = req.params.email;
+  const rider = await Rider.findOne({ email });
 
+  if (!rider) {
+    res.status(404).json({ message: "Rider not found" });
+    throw new Error("Rider not found");
+  }
+  
+  res.json(rider); // Corrected from res.json(user) to res.json(rider)
+});
 
 
 // @desc    get rider by id
@@ -118,4 +116,5 @@ module.exports = {
   signUp,
   signIn,
   updateRiderStatus,
+  getRiderByEmail,
 };

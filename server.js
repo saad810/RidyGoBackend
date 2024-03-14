@@ -2,40 +2,56 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const { logger } = require("./middleware/logger");
-const errorHandler = require("./middleware/errHandler");
 const cors = require("cors");
+const http = require('http');
+const socketIo = require('socket.io');
+
 const corsOptions = require("./config/corsOptions");
+const OrderRoutes = require("./routes/OrderRoutes");
+const UserRoutes = require("./routes/UserRoutes");
+const RiderRoutes = require("./routes/RiderRoutes");
+
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
 app.use(cors(corsOptions));
 app.use(express.json());
-// app.use(logger);
 app.use(cookieParser());
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-app.use("/order", require("./routes/OrderRoutes"));
-app.use("/user", require("./routes/UserRoutes"));
-app.use("/rider", require("./routes/RiderRoutes"));
-// app.use("/orderDetails", require("./routes/OrderDetailsRoutes"));
 
-// app.use(errorHandler);
-const port = process.env.PORT || 3000;
+// Routes
+app.use("/order", OrderRoutes);
+app.use("/user", UserRoutes);
+app.use("/rider", RiderRoutes);
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Database connected");
-    app.listen(port, () => {
-      console.log(`Server is running on port http://localhost:${port}`);
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("Database connected");
+
+  // Socket.io logic
+  io.on('connection', (socket) => {
+    console.log('A client connected');
+
+    // Handle disconnections
+    socket.on('disconnect', () => {
+        console.log('A client disconnected');
     });
-  })
-  .catch((err) => {
-    console.log(err);
   });
+
+  // Start the server
+  const port = process.env.PORT || 3000;
+  server.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`);
+  });
+})
+.catch((err) => {
+  console.error("Database connection error:", err);
+});

@@ -74,7 +74,7 @@ const getMostRecentOrdersByUser = asyncHandler(async (req, res) => {
   try {
     // Query RideOrder collection based on userId and sort by date in descending order
     const orders = await RideOrder.find({ userId })
-      .sort({ date: -1 })
+      .sort({ date: -1 }) // Sort by date in descending order (most recent first)
       .limit(limit)
       .exec();
     if (!orders.length)

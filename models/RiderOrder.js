@@ -7,12 +7,6 @@ const RideOrderModel = new mongoose.Schema({
     required: true,
   },
 
-  riderId:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Rider",
-    required:true,
-    default:null
-  },
   status: {
     type: String,
     required: true,

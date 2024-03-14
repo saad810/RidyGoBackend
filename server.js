@@ -26,7 +26,10 @@ app.use("/rider", require("./routes/RiderRoutes"));
 const port = process.env.PORT || 3000;
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Database connected");
     app.listen(port, () => {
